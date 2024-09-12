@@ -1,0 +1,326 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".ui.perfil.MiPerfilFragment">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <!--HeaderMain-->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/azul_codelco"
+            android:orientation="vertical">
+
+
+            <!--Header informacion usuario-->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical">
+
+                <androidx.cardview.widget.CardView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginTop="10dp"
+                    android:elevation="30dp"
+                    app:cardCornerRadius="20dp">
+
+                    <ImageView
+                        android:layout_width="190dp"
+                        android:layout_height="190dp"
+                        android:layout_gravity="center"
+                        android:scaleType="centerCrop"
+                        android:src="@drawable/fotoperfil_perfil" />
+
+                </androidx.cardview.widget.CardView>
+
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="5dp"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Bienvenido"
+                        android:textColor="@color/white"
+                        android:textSize="18sp" />
+
+                    <TextView
+                        android:id="@+id/txt_usuarioBienvenida_miPerfilFragment"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="5dp"
+                        android:text="Usuario"
+                        android:textColor="@color/white"
+                        android:textSize="18sp" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="5dp"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Cargo:"
+
+                        android:textColor="@color/white"
+                        android:textSize="18sp" />
+
+                    <TextView
+                        android:id="@+id/txt_cargoUsuario_miPerfilFragment"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="5dp"
+                        android:text="null"
+                        android:textColor="@color/white"
+                        android:textSize="18sp" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="5dp"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Correo:"
+                        android:textColor="@color/white"
+                        android:textSize="18sp" />
+
+                    <TextView
+                        android:id="@+id/txtCorreo_MiPerfilFragment"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="5dp"
+                        android:text="correo@usuario.cl"
+                        android:textColor="@color/white"
+                        android:textSize="18sp" />
+
+
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="5dp"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Rut:"
+                        android:textColor="@color/white"
+                        android:textSize="18sp" />
+
+                    <TextView
+                        android:id="@+id/txtRut_MiPerfilFragment"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="5dp"
+                        android:text="12345678-9"
+                        android:textColor="@color/white"
+                        android:textSize="18sp" />
+
+
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="5dp"
+                    android:orientation="horizontal"
+                    android:visibility="gone">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Estado:"
+                        android:textColor="@color/white"
+                        android:textSize="18sp" />
+
+                    <TextView
+                        android:id="@+id/txtEstado_MiPerfilFragment"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="5dp"
+                        android:text="Estado"
+                        android:textColor="@color/white"
+                        android:textSize="18sp" />
+
+                </LinearLayout>
+
+
+            </LinearLayout>
+
+
+            <!--Header menu opciones-->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <HorizontalScrollView
+                    android:id="@+id/horizontalScrollview_MiPerfilFragment"
+                    android:layout_width="match_parent"
+                    android:layout_height="75dp"
+                    android:layout_gravity="center"
+                    android:layout_marginBottom="5dp">
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:orientation="horizontal">
+
+                        <Button
+                            android:id="@+id/btnTodo_MiPerfilFragment"
+                            android:layout_width="90dp"
+                            android:layout_height="50dp"
+                            android:text="Todo"
+                            android:elevation="5dp"
+                            android:layout_margin="5dp"
+                            android:backgroundTint="@color/purple_700"
+                            />
+
+                        <Button
+                            android:id="@+id/btnGrave_MiPerfilFragment"
+                            android:layout_width="140dp"
+                            android:layout_height="50dp"
+                            android:text="Graves"
+                            android:elevation="5dp"
+                            android:layout_margin="5dp"
+                            android:backgroundTint="@color/rojo_mapa"
+                            />
+
+                        <Button
+                            android:id="@+id/btnLeve_MiPerfilFragment"
+                            android:layout_width="140dp"
+                            android:layout_height="50dp"
+                            android:backgroundTint="@color/amarillo_mapa"
+                            android:text="Leves"
+                            android:elevation="5dp"
+                            android:layout_margin="5dp" />
+
+                        <Button
+                            android:id="@+id/btnPositivo_MiPerfilFragment"
+                            android:layout_width="140dp"
+                            android:layout_height="50dp"
+                            android:backgroundTint="@color/verde_mapa"
+                            android:text="Positivos"
+                            android:elevation="5dp"
+                            android:layout_margin="5dp" />
+
+                        <Button
+                            android:id="@+id/btnOportunidadMejora_MiPerfilFragment"
+                            android:layout_width="150dp"
+                            android:layout_height="50dp"
+                            android:backgroundTint="@color/azul_mapa"
+                            android:text="Oportunidad"
+                            android:elevation="5dp"
+                            android:layout_margin="5dp"/>
+
+                        <Button
+                            android:id="@+id/btnEmergencia_MiPerfilFragment"
+                            android:layout_width="150dp"
+                            android:layout_height="50dp"
+                            android:backgroundTint="@color/red"
+                            android:text="Emergencia"
+                            android:elevation="5dp"
+                            android:layout_margin="5dp"/>
+
+                    </LinearLayout>
+
+                </HorizontalScrollView>
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+        <!--Body-->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_marginTop="5dp">
+
+            <TextView
+                android:id="@+id/txtAlertasPendientes_MiPerfilFragment"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:text="Nuevas Alertas: "
+                android:textSize="30sp" />
+
+            <TextView
+                android:id="@+id/txtSindatos_gone_miperfilFragment"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:text="No tiene nuevas alertas"
+                android:textSize="20sp" />
+
+            <ProgressBar
+                android:id="@+id/progressBar_MiPerfilFragment"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center" />
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/recyclerView_perfilFragment"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:paddingBottom="5dp"
+                android:layout_marginBottom="5dp"/>
+
+
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginTop="5dp"
+                android:layout_marginBottom="10dp"
+                android:orientation="horizontal">
+
+                <Button
+                    android:id="@+id/btnHistorial_Alertas_MiPerfilFragment"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:text="Todas mis alertas"
+                    android:layout_marginEnd="10dp"/>
+
+                <Button
+                    android:id="@+id/btnGestionar_Alertas_MiPerfilFragment"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:text="Gestionar Tickets" />
+            </LinearLayout>
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+
+</ScrollView>

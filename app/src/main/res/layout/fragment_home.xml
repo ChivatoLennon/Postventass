@@ -1,0 +1,222 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ui.home.HomeFragment"
+    android:id="@+id/idFragmentHome">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="360dp"
+        android:layout_height="655dp"
+        android:layout_marginStart="5dp"
+        android:layout_marginTop="5dp"
+        android:layout_marginEnd="5dp"
+        android:layout_marginBottom="10dp"
+        android:backgroundTint="@color/cardview_dark_background"
+        android:elevation="10dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <ImageButton
+            android:id="@+id/imgBtn_alertas_homeFragment"
+            android:layout_width="140dp"
+            android:layout_height="140dp"
+            android:layout_marginStart="13dp"
+            android:layout_marginTop="18dp"
+            android:layout_marginEnd="36dp"
+            android:background="@drawable/alerta_icon"
+            android:elevation="5dp"
+            app:layout_constraintEnd_toStartOf="@+id/gridlayout_perfil_homeFragment"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/textView13"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="5dp"
+            android:layout_marginEnd="1dp"
+            android:text="Ingresar Alerta"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toStartOf="@+id/textView14"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/imgBtn_alertas_homeFragment" />
+
+        <TextView
+            android:id="@+id/textView14"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="50dp"
+            android:layout_marginTop="4dp"
+            android:layout_marginEnd="50dp"
+            android:text="Mi Perfil"
+            android:textStyle="bold"
+            android:textSize="20sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/textView13"
+            app:layout_constraintTop_toBottomOf="@+id/gridlayout_perfil_homeFragment" />
+
+        <TextView
+            android:id="@+id/textView18"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="35dp"
+            android:layout_marginEnd="98dp"
+            android:text="Dashboard"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toStartOf="@+id/textView15"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/imgBtn_dashboard_homeFragment" />
+
+        <TextView
+            android:id="@+id/textView15"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="98dp"
+            android:text="Metas"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            app:layout_constraintStart_toEndOf="@+id/textView18"
+            app:layout_constraintTop_toBottomOf="@+id/imgBtn_metas_homeFragment" />
+
+        <TextView
+            android:id="@+id/textView17"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="15dp"
+            android:text="Politicas Empresa"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/imgBtn_informes_homeFragment" />
+
+        <TextView
+            android:id="@+id/textView16"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="36dp"
+            android:layout_marginEnd="39dp"
+            android:text="Soporte Tècnico"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/textView17"
+            app:layout_constraintTop_toBottomOf="@+id/imgBtn_soporteTecnico_homeFragment" />
+
+        <ImageButton
+            android:id="@+id/imgBtn_dashboard_homeFragment"
+            android:layout_width="140dp"
+            android:layout_height="140dp"
+            android:layout_marginStart="15dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginEnd="33dp"
+            android:background="@drawable/dashboardimg_icon"
+            app:layout_constraintEnd_toStartOf="@+id/imgBtn_metas_homeFragment"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textView13" />
+
+        <ImageButton
+            android:id="@+id/imgBtn_informes_homeFragment"
+            android:layout_width="140dp"
+            android:layout_height="140dp"
+            android:layout_marginStart="15dp"
+            android:layout_marginTop="20dp"
+            android:background="@drawable/documents_icon"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textView18" />
+
+        <GridLayout
+            android:id="@+id/gridlayout_perfil_homeFragment"
+            android:layout_width="140dp"
+            android:layout_height="140dp"
+            android:layout_marginStart="36dp"
+            android:layout_marginTop="13dp"
+            app:layout_constraintStart_toEndOf="@+id/imgBtn_alertas_homeFragment"
+            app:layout_constraintTop_toTopOf="parent"
+            android:columnCount="2">
+
+            <FrameLayout
+                android:layout_width="140dp"
+                android:layout_height="140dp"
+                android:id="@+id/framelayoutMiperfil_fragmentHome">
+
+                <ImageButton
+                    android:id="@+id/imgBtn_perfil_homeFragment"
+                    android:layout_width="140dp"
+                    android:layout_height="140dp"
+                    android:background="@drawable/perfil_icon"/>
+
+                <ProgressBar
+                    android:id="@+id/progressBar_badgeCount_HomeFragment"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="bottom|end"/>
+
+                <EditText
+                    android:id="@+id/counterNotificationBadge_homefragment"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:textSize="20sp"
+                    android:textColor="#fff"
+                    android:textStyle="bold"
+                    android:text="0"
+                    android:textAlignment="center"
+                    android:inputType="number"
+                    android:maxLength="2"
+                    android:background="@drawable/notification_shape"
+                    android:layout_gravity="bottom|end"
+                    tools:ignore="RtlCompat"
+                    android:enabled="false"/>
+
+            </FrameLayout>
+
+        </GridLayout>
+
+
+
+        <ImageButton
+            android:id="@+id/imgBtn_metas_homeFragment"
+            android:layout_width="140dp"
+            android:layout_height="140dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginEnd="32dp"
+            android:background="@drawable/objetivo_meta_icon"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textView14" />
+
+        <ImageButton
+            android:id="@+id/imgBtn_soporteTecnico_homeFragment"
+            android:layout_width="140dp"
+            android:layout_height="140dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginEnd="32dp"
+            android:background="@drawable/tecnical_support_icon"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textView15" />
+
+        <Button
+            android:id="@+id/btn_cerrarSesion_homeFragment"
+            android:layout_width="200dp"
+            android:layout_height="70dp"
+            android:layout_marginStart="30dp"
+            android:layout_marginTop="22dp"
+            android:layout_marginEnd="30dp"
+            android:backgroundTint="#3C4F76"
+            android:text="Cerrar Sesion"
+            android:textSize="18sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textView17" />
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

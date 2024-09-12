@@ -1,0 +1,57 @@
+///////////////////////////(12/07/2024 14:00)///////////////////////////
+Num 1(LISTO) : Añadir en mis alertas acceso para accion al pulsar en el cardView de MiPerfilFragment.
+
+Num 2(LISTO) : Añadir en Gestiones un candado que diferencie si una gestion(Ticket) esta cerrada o abierta.
+
+Num 4 : App prevencion(casco) Icono de la app, logo del Login, navBar iconos, toda marca empresarial que identifique.
+
+
+//////////////////////////// 29-07-2024 ////////////////////////////
+
+Hello para quien lea.
+
+LISTO/Realizado:
+    Logueo.
+    Registro Usuarios(solo trabajadores)
+    Ingreso de alertas.
+    Perfil de usuario.
+    Historial de alertas
+    Pantalla de tickets creados
+    Historial de tickets.
+
+Tablas y procedimientos almacenados en el SQL Server. BD: Webpay
+
+
+PENDIENTE:
+    -Aplicar notificaciones en tiempo real con FCM Firebase Messages y una API y que lleguen de manera instantanea.
+    Al momento de enviar...
+        ...Una alerta al supervisor asignado o grupo de sector responsable
+        ...Una derivacion de alerta(cambio de alerta a otro supervisor)
+        ...Un cierre de ticket
+
+
+
+
+----------- ¿Errores al comenzar? -----------------
+
+Si da los siguientes errores:
+----------
+--ERROR>>>>>>> Caused by: org.gradle.api.internal.artifacts.ivyservice.DefaultLenientConfiguration$ArtifactResolveException: Could not resolve all files for configuration ':app:debugRuntimeClasspath'.
+
+1 - Entrar a build.gradle.kts
+2 - Bajar todo hasta encontrar:
+    implementation(files("C:/Users/HARDMACHINE/AndroidStudioProjects/PostVentaAndroid/app/libs/jtds-1.3.1.jar"))
+    Y leer comentarios
+----------
+----------
+
+--ERROR>>>>>>> Project SDK NOT FOUND...
+
+1 - Ir a la esquina superior derecha
+2 - clickear en el engranaje que esta ubicado a la derecha de la lupa
+3 - luego en Project Estructure
+4 - luego deberia aparecerte una ventana flotante informandote que tomara el SDk de la ubicacion donde instalaste dicha SDK.
+5 - Darle OK y listo
+
+----------
+----------------- Fin errores al comenzar ----------------------------------

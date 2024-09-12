@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "710978900151",
+    "project_id": "postventaandroid-notificacion",
+    "storage_bucket": "postventaandroid-notificacion.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:710978900151:android:d5fa02bc94185ff5377d32",
+        "android_client_info": {
+          "package_name": "com.example.postventaandroid"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAZJeqOyq9bhl06hjN4tHvwuyvUO0eI2Ns"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

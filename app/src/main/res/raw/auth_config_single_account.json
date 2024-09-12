@@ -1,0 +1,15 @@
+{
+  "client_id" : "ae635a4a-8db7-44ef-b93c-faab06a181e4",
+  "authorization_user_agent" : "DEFAULT",
+  "redirect_uri" : "msauth://com.example.postventaandroid/UibPANB%2BbuO8wz%2FAfLbMgwBRbWs%3D",
+  "account_mode": "SINGLE",
+  "authorities" : [
+    {
+      "type": "AAD",
+      "audience": {
+        "type": "AzureADandPersonalMicrosoftAccount",
+        "tenant_id": "common"
+      }
+    }
+  ]
+}

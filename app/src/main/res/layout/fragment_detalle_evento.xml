@@ -1,0 +1,471 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ui.detalleEvento.DetalleEvento"
+    android:orientation="vertical"
+    android:id="@+id/layout_detalleEventoID">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <ScrollView
+            android:id="@+id/id_detalleEvento_Scrollview"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:fillViewport="true"
+            tools:layout_editor_absoluteY="2dp"
+            android:layout_gravity="center">
+
+
+            <!-- -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:padding="16dp">
+
+                <androidx.cardview.widget.CardView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    app:cardCornerRadius="10dp"
+                    android:elevation="20dp"
+                    android:layout_marginEnd="30dp"
+                    android:layout_marginStart="30dp"
+                    android:layout_marginBottom="10dp">
+
+                    <ImageView
+                        android:id="@+id/imgview_hallazgo_detalleEvento"
+                        android:layout_width="256dp"
+                        android:layout_height="256dp"
+                        android:background="@color/white"
+                        android:scaleType="centerCrop"
+                        android:contentDescription="Foto del Hallazgo"/>
+
+                </androidx.cardview.widget.CardView>
+
+
+                <Button
+                    android:id="@+id/btnDesplegarAcciones_DetalleEvento"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:text="Acciones"
+                    android:backgroundTint="@color/teal_700"
+                    android:layout_margin="5dp"
+                    android:elevation="10dp"
+                    android:visibility="gone"/>
+
+
+                <!--ID Reporte -->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="10dp"
+                    android:orientation="vertical"
+                    android:background="@drawable/description_container"
+                    android:elevation="5dp">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="8dp"
+                        android:text="ID de Hallazgo:"
+                        android:textSize="24sp"
+                        android:textStyle="bold"/>
+
+                    <TextView
+                        android:id="@+id/txtReporte_detalleEvento"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="5dp"
+                        android:hint="No hay nada"
+                        android:paddingLeft="2dp"
+                        android:textSize="24sp" />
+                </LinearLayout>
+
+                <!-- Sector -->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="10dp"
+                    android:orientation="vertical"
+                    android:background="@drawable/description_container"
+                    android:elevation="5dp">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="8dp"
+                        android:text="Sector:"
+                        android:textSize="24sp"
+                        android:textStyle="bold"/>
+
+                    <TextView
+                        android:id="@+id/txtSector_detalleEvento"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="5dp"
+                        android:hint="No hay nada"
+                        android:paddingLeft="2dp"
+                        android:textSize="24sp" />
+                </LinearLayout>
+
+                <!-- Supervisor-->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="10dp"
+                    android:orientation="vertical"
+                    android:background="@drawable/description_container"
+                    android:elevation="5dp">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="8dp"
+                        android:text="Supervisor:"
+                        android:textSize="24sp"
+                        android:textStyle="bold"/>
+
+                    <TextView
+                        android:id="@+id/txtSupervisor_detalleEvento"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="5dp"
+                        android:hint="No hay nada"
+                        android:paddingLeft="2dp"
+                        android:textSize="24sp" />
+                </LinearLayout>
+
+                <!--Nivel Alerta -->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="10dp"
+                    android:orientation="vertical"
+                    android:background="@drawable/description_container"
+                    android:elevation="5dp">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="8dp"
+                        android:text="Nivel Alerta:"
+                        android:textSize="24sp"
+                        android:textStyle="bold"/>
+
+                    <TextView
+                        android:id="@+id/txtNivelAlerta_detalleEvento"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="5dp"
+                        android:hint="No hay nada"
+                        android:paddingLeft="2dp"
+                        android:textSize="24sp" />
+                </LinearLayout>
+
+                <!--Descripcion -->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:background="@drawable/description_container"
+                    android:elevation="5dp"
+                    android:layout_marginBottom="10dp">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="8dp"
+                        android:text="Descripcion:"
+                        android:textSize="24sp"
+                        android:textStyle="bold"/>
+
+                    <TextView
+                        android:id="@+id/txtDescripcion_detalleEvento"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="5dp"
+                        android:ellipsize="end"
+                        android:hint="No hay nada que mostrar"
+                        android:maxLines="10"
+                        android:padding="5dp"
+                        android:textSize="24sp" />
+                </LinearLayout>
+
+                <!-- Verificado/Revisado-->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:background="@drawable/description_container"
+                    android:elevation="5dp"
+                    android:layout_marginBottom="10dp">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="8dp"
+                        android:text="Revisado:"
+                        android:textSize="24sp"
+                        android:textStyle="bold"/>
+
+                    <TextView
+                        android:id="@+id/txtVerificado_detalleEvento"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="5dp"
+                        android:ellipsize="end"
+                        android:hint="No hay nada que mostrar"
+                        android:maxLines="10"
+                        android:padding="5dp"
+                        android:textSize="24sp" />
+                </LinearLayout>
+
+                <!-- Fecha-->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:background="@drawable/description_container"
+                    android:elevation="5dp"
+                    android:layout_marginBottom="10dp">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="8dp"
+                        android:text="Fecha:"
+                        android:textSize="24sp"
+                        android:textStyle="bold"/>
+
+                    <TextView
+                        android:id="@+id/txtFecha_detalleEvento"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="5dp"
+                        android:ellipsize="end"
+                        android:hint="No hay nada que mostrar"
+                        android:maxLines="10"
+                        android:padding="5dp"
+                        android:textSize="24sp" />
+                </LinearLayout>
+
+                <!-- EstadoCierre-->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:background="@drawable/description_container"
+                    android:elevation="5dp"
+                    android:layout_marginBottom="10dp">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="8dp"
+                        android:text="Estado cierre:"
+                        android:textSize="24sp"
+                        android:textStyle="bold"/>
+
+                    <TextView
+                        android:id="@+id/txtEstadoCierre_detalleEvento"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="5dp"
+                        android:ellipsize="end"
+                        android:hint="No hay nada que mostrar"
+                        android:maxLines="10"
+                        android:padding="5dp"
+                        android:textSize="24sp" />
+                </LinearLayout>
+
+                <!-- ProyectoMina-->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:background="@drawable/description_container"
+                    android:elevation="5dp"
+                    android:layout_marginBottom="10dp">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="8dp"
+                        android:text="Proyecto/Mina:"
+                        android:textSize="24sp"
+                        android:textStyle="bold"/>
+
+                    <TextView
+                        android:id="@+id/txtProyectoMina_detalleEvento"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="5dp"
+                        android:ellipsize="end"
+                        android:hint="No hay nada que mostrar"
+                        android:maxLines="10"
+                        android:padding="5dp"
+                        android:textSize="24sp" />
+                </LinearLayout>
+
+                <!-- Area-->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:background="@drawable/description_container"
+                    android:elevation="5dp"
+                    android:layout_marginBottom="10dp">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="8dp"
+                        android:text="Area:"
+                        android:textSize="24sp"
+                        android:textStyle="bold"/>
+
+                    <TextView
+                        android:id="@+id/txtArea_detalleEvento"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="5dp"
+                        android:ellipsize="end"
+                        android:hint="No hay nada que mostrar"
+                        android:maxLines="10"
+                        android:padding="5dp"
+                        android:textSize="24sp" />
+                </LinearLayout>
+
+                <!-- Actividad-->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:background="@drawable/description_container"
+                    android:elevation="5dp"
+                    android:layout_marginBottom="10dp">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="8dp"
+                        android:text="Actividad:"
+                        android:textSize="24sp"
+                        android:textStyle="bold"/>
+
+                    <TextView
+                        android:id="@+id/txtActividad_detalleEvento"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="5dp"
+                        android:ellipsize="end"
+                        android:hint="No hay nada que mostrar"
+                        android:maxLines="10"
+                        android:padding="5dp"
+                        android:textSize="24sp" />
+                </LinearLayout>
+
+                <!-- Riesgo_RC-->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:background="@drawable/description_container"
+                    android:elevation="5dp"
+                    android:layout_marginBottom="10dp">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="8dp"
+                        android:text="Riesgo RC:"
+                        android:textSize="24sp"
+                        android:textStyle="bold"/>
+
+                    <TextView
+                        android:id="@+id/txtRiesgo_RC_detalleEvento"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="5dp"
+                        android:ellipsize="end"
+                        android:hint="No hay nada que mostrar"
+                        android:maxLines="10"
+                        android:padding="5dp"
+                        android:textSize="24sp" />
+                </LinearLayout>
+
+                <!-- Reportado por-->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:background="@drawable/description_container"
+                    android:elevation="5dp"
+                    android:layout_marginBottom="10dp">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="8dp"
+                        android:text="Reportado por:"
+                        android:textSize="24sp"
+                        android:textStyle="bold"/>
+
+                    <TextView
+                        android:id="@+id/txtReportadoPor_detalleEvento"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="5dp"
+                        android:ellipsize="end"
+                        android:hint="No hay nada que mostrar"
+                        android:maxLines="10"
+                        android:padding="5dp"
+                        android:textSize="24sp" />
+                </LinearLayout>
+
+                <!-- Responsable-->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:background="@drawable/description_container"
+                    android:elevation="5dp"
+                    android:layout_marginBottom="10dp"
+                    android:visibility="gone">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="8dp"
+                        android:text="Responsable:"
+                        android:textSize="24sp"
+                        android:textStyle="bold"/>
+
+                    <TextView
+                        android:id="@+id/txtResponsable_detalleEvento"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="5dp"
+                        android:ellipsize="end"
+                        android:hint="No hay nada que mostrar"
+                        android:maxLines="10"
+                        android:padding="5dp"
+                        android:textSize="24sp" />
+                </LinearLayout>
+
+
+            </LinearLayout>
+
+        </ScrollView>
+
+    </LinearLayout>
+
+</FrameLayout>

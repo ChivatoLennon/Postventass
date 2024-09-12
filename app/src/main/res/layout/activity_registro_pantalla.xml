@@ -1,0 +1,219 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ui.login.Registro_pantalla">
+
+    <LinearLayout
+        android:id="@+id/contraint_registro_pantalla"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="30dp"
+        android:layout_marginEnd="20dp"
+        android:layout_marginBottom="30dp"
+        android:background="@drawable/login_background_shape"
+        android:elevation="5dp"
+        android:orientation="vertical"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <TextView
+            android:id="@+id/txtView_titulo"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginTop="20dp"
+            android:layout_marginBottom="20dp"
+            android:text="ingrese sus credenciales"
+
+            android:textSize="20sp" />
+
+        <LinearLayout
+            android:layout_width="220dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:orientation="horizontal">
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/txt_Rut_acitivityRegistro"
+                android:layout_width="175dp"
+                android:layout_height="wrap_content"
+                android:hint="Ingrese Rut"
+                app:counterEnabled="true"
+                app:counterMaxLength="8"
+                app:boxBackgroundColor="@color/white">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="number"
+                    android:maxLength="8"
+                    />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <Spinner
+                android:id="@+id/txt_RutDigito_acitivityRegistro"
+                android:layout_width="30dp"
+                android:layout_height="40dp"
+                android:layout_gravity="center|top"
+                android:layout_margin="5dp"
+                android:background="@drawable/edittext_border"
+                android:elevation="8dp"
+                android:spinnerMode="dropdown"/>
+
+        </LinearLayout>
+
+        <EditText
+            android:id="@+id/txt_nombre_acitivityRegistro"
+            android:layout_width="270dp"
+            android:layout_height="40dp"
+            android:layout_gravity="center"
+            android:layout_margin="5dp"
+            android:background="@drawable/edittext_border"
+            android:elevation="8dp"
+            android:hint="Ingrese su nombre"
+            android:inputType="text"
+            android:paddingStart="9dp" />
+
+        <EditText
+            android:id="@+id/txt_apellido_acitivityRegistro"
+            android:layout_width="270dp"
+            android:layout_height="40dp"
+            android:layout_gravity="center"
+
+            android:layout_margin="5dp"
+            android:background="@drawable/edittext_border"
+            android:elevation="8dp"
+            android:hint="Ingrese apellido"
+            android:inputType="text"
+            android:paddingStart="9dp" />
+
+        <EditText
+            android:id="@+id/txt_correo_acitivityRegistro"
+            android:layout_width="270dp"
+            android:layout_height="40dp"
+            android:layout_gravity="center"
+            android:layout_margin="5dp"
+            android:background="@drawable/edittext_border"
+            android:elevation="8dp"
+            android:hint="Ingrese su correo"
+            android:inputType="textEmailAddress"
+            android:paddingStart="9dp" />
+
+        <EditText
+            android:id="@+id/txt_contrasena_acitivityRegistro"
+            android:layout_width="270dp"
+            android:layout_height="40dp"
+            android:layout_gravity="center"
+            android:layout_margin="5dp"
+            android:background="@drawable/edittext_border"
+            android:elevation="8dp"
+            android:hint="Ingrese contrasena"
+            android:inputType="textPassword"
+            android:paddingStart="9dp" />
+
+        <EditText
+            android:id="@+id/txt_confirmacionContrasena_acitivityRegistro"
+            android:layout_width="270dp"
+            android:layout_height="40dp"
+            android:layout_gravity="center"
+            android:layout_margin="5dp"
+            android:background="@drawable/edittext_border"
+            android:elevation="8dp"
+            android:hint="Confirme contrasena"
+            android:inputType="textPassword"
+            android:paddingStart="9dp" />
+
+        <ProgressBar
+            android:id="@+id/progressBar_registroActivity"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:layout_gravity="center"/>
+
+        <TextView
+            android:id="@+id/txtGuardandoPDF_firmado_MiPerfilFragment"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Guardando PDF Firmado..."
+            android:layout_gravity="center" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginTop="0dp"
+            android:orientation="horizontal">
+
+            <CheckBox
+                android:id="@+id/checkBoxTerminos_RegistroPantalla"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="10dp"
+                android:layout_gravity="center"
+                android:text="Acepta Terminos y Condiciones"
+                android:enabled="true"/>
+            <TextView
+                android:id="@+id/txtLeerTerminos_RegistroPantalla"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="10dp"
+                android:layout_gravity="center"
+                android:text="Leer terminos"
+                android:textStyle="bold"/>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginTop="1dp"
+            android:orientation="horizontal">
+
+            <CheckBox
+                android:id="@+id/checkBoxPoliticasEmpresa_RegistroPantalla"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="10dp"
+                android:layout_gravity="center"
+                android:text="Acepta Politicas de la Empresa"
+                android:enabled="true"/>
+            <TextView
+                android:id="@+id/txtVerPoliticasEmpresa_RegistroPantalla"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="10dp"
+                android:layout_gravity="center"
+                android:text="Ver politicas"
+                android:textStyle="bold"/>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginTop="2dp"
+            android:orientation="vertical">
+
+            <Button
+                android:id="@+id/btnRegistrarse_RegistroPantalla"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:backgroundTint="#3C4F76"
+                android:text="Registrarse" />
+        </LinearLayout>
+
+
+    </LinearLayout>
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

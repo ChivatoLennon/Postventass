@@ -1,0 +1,254 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/id_galleryFragmentLayout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ui.gallery.GalleryFragment">
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <!--Foto-->
+        <ImageView
+            android:id="@+id/imgAlerta_galleryFragment"
+            android:layout_width="220dp"
+            android:layout_height="220dp"
+            android:layout_gravity="center"
+            android:layout_marginStart="30dp"
+            android:layout_marginTop="40dp"
+            android:layout_marginEnd="30dp"
+            android:elevation="10dp" />
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:orientation="horizontal">
+
+            <!--tomar foto button-->
+            <Button
+                android:id="@+id/button_tomarFoto_galleryFragment"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="5dp"
+                android:backgroundTint="#3C4F76"
+                android:elevation="8dp"
+                android:text="@string/button_tomarFoto" />
+
+            <!--Subir foto button
+            <Button
+                android:id="@+id/buttonSubirImagen_galleryFragment"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="5dp"
+                android:backgroundTint="#3C4F76"
+                android:elevation="8dp"
+                android:text="@string/button_cargarImg" />-->
+
+
+        </LinearLayout>
+
+        <!-- Reportado por-->
+        <EditText
+            android:id="@+id/editTxt_ReportadoPor_galleryFragment"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_margin="20dp"
+            android:layout_marginTop="20dp"
+            android:background="@drawable/edittext_border"
+            android:elevation="8dp"
+            android:enabled="false"
+            android:hint="Reportado por"
+            android:inputType="text"
+            android:maxLength="50"
+            android:paddingStart="7dp"
+            android:paddingEnd="7dp" />
+
+        <!--Sector-->
+        <Spinner
+            android:id="@+id/spinner_Sector_galleryFragment"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_margin="20dp"
+            android:layout_marginTop="20dp"
+            android:background="@drawable/edittext_border"
+            android:elevation="8dp"
+            android:hint="Ingrese Sector"
+            android:inputType="text"
+            android:spinnerMode="dialog" />
+
+        <!--Supervisor-->
+        <Spinner
+            android:id="@+id/spinner_Supervisor_galleryFragment"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_margin="20dp"
+            android:layout_marginTop="20dp"
+            android:background="@drawable/edittext_border"
+            android:elevation="8dp"
+            android:hint="Ingrese Supervisor"
+            android:inputType="text"
+            android:spinnerMode="dialog" />
+
+        <!--Proyecto/Mina-->
+        <Spinner
+            android:id="@+id/spinner_ProyectoMina_galleryFragment"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_margin="20dp"
+            android:layout_marginTop="20dp"
+            android:background="@drawable/edittext_border"
+            android:elevation="8dp"
+            android:hint="Ingrese Sector"
+            android:inputType="text"
+            android:spinnerMode="dialog" />
+
+        <!--Area-->
+        <Spinner
+            android:id="@+id/spinner_Area_galleryFragment"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_margin="20dp"
+            android:layout_marginTop="20dp"
+            android:background="@drawable/edittext_border"
+            android:elevation="8dp"
+            android:hint="Ingrese Area"
+            android:paddingStart="7dp"
+            android:paddingEnd="7dp"
+            android:spinnerMode="dialog" />
+
+        <!-- Actividad-->
+        <EditText
+            android:id="@+id/editTxt_Actividad_galleryFragment"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_margin="20dp"
+            android:layout_marginTop="20dp"
+            android:background="@drawable/edittext_border"
+            android:elevation="8dp"
+            android:gravity="top"
+            android:hint="Ingrese Actividad"
+            android:inputType="textCapSentences|textMultiLine"
+            android:maxLength="250"
+            android:padding="7dp"/>
+
+
+        <!-- Responsable
+        <Spinner
+            android:id="@+id/spinner_Responsable_galleryFragment"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_margin="20dp"
+            android:layout_marginTop="20dp"
+            android:paddingStart="7dp"
+            android:paddingEnd="7dp"
+            android:background="@drawable/edittext_border"
+            android:elevation="8dp"
+            android:hint="Ingrese Responsable"
+            android:inputType="text"
+            android:maxLength="50"
+            android:spinnerMode="dialog"/>-->
+
+        <!-- Estado cierre-->
+        <EditText
+            android:id="@+id/editTxt_EstadoCierre_galleryFragment"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_margin="20dp"
+            android:layout_marginTop="20dp"
+            android:background="@drawable/edittext_border"
+            android:elevation="8dp"
+            android:enabled="false"
+            android:hint="Ingrese Cierre"
+            android:inputType="text"
+            android:maxLength="50"
+            android:paddingStart="7dp"
+            android:paddingEnd="7dp"
+            android:visibility="gone" />
+
+        <!--RC Riesgo Asociado-->
+        <Spinner
+            android:id="@+id/spinner_RC_RiesgoAsociado_galleryFragment"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_margin="20dp"
+            android:layout_marginTop="20dp"
+            android:background="@drawable/edittext_border"
+            android:elevation="8dp"
+            android:hint="Ingrese Sector"
+            android:inputType="text"
+            android:spinnerMode="dialog" />
+
+
+        <LinearLayout
+            android:id="@+id/linearlayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <!--NIVEL ALERTA-->
+            <Spinner
+                android:id="@+id/spinner_nivelAlerta_galleryFragment"
+                android:layout_width="240dp"
+                android:layout_height="40dp"
+                android:layout_margin="20dp"
+                android:layout_marginTop="20dp"
+                android:background="@drawable/edittext_border"
+                android:elevation="8dp"
+                android:spinnerMode="dialog"
+                android:textAlignment="center" />
+
+            <View
+                android:id="@+id/colorSquare"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:layout_marginTop="16dp"
+                android:background="#FFFFFF"
+                android:elevation="8dp" />
+
+        </LinearLayout>
+
+
+        <!--Descripcion-->
+        <EditText
+            android:id="@+id/editTxt_descripcion_galleryFragment"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_margin="20dp"
+            android:layout_marginTop="20dp"
+            android:background="@drawable/edittext_border"
+            android:elevation="8dp"
+            android:gravity="top"
+            android:hint="Descripcion de la alerta"
+            android:inputType="textMultiLine|textCapSentences"
+            android:maxLength="250"
+            android:padding="7dp" />
+
+        <ProgressBar
+            android:id="@+id/progressBar_GalleryFragment"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center" />
+
+
+        <!--Enviar datos button-->
+        <Button
+            android:id="@+id/button_enviarDatos_galleryFragment"
+            android:layout_width="250dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_margin="5dp"
+            android:backgroundTint="#3C4F76"
+            android:elevation="8dp"
+            android:text="@string/button_enviarDatos" />
+
+
+    </LinearLayout>
+
+
+</ScrollView>

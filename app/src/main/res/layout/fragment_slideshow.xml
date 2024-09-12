@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ui.slideshow.SlideshowFragment"
+    android:orientation="vertical">
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="30sp"
+            android:text="En desarrollo"
+            android:layout_gravity="start|bottom"/>
+
+        <Button
+            android:id="@+id/btn_IrA_Mapa_slideshowFragment"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="ir a Mapa"
+            android:layout_gravity="center"/>
+
+        <Button
+            android:id="@+id/btn_IrA_DatosMapa_slideshowFragment"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="ir a Datos de cada Mapa"
+            android:layout_gravity="center"/>
+
+    </LinearLayout>
+
+
+
+
+
+
+
+    <!--<com.github.mikephil.charting.charts.BarChart
+        android:id="@+id/barChart_slideShowFragment"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"/>-->
+
+
+
+
+
+
+
+
+
+
+</ScrollView>

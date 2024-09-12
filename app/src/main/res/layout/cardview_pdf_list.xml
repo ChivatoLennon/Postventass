@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    app:cardElevation="8dp"
+    app:cardCornerRadius="10dp"
+    android:layout_margin="10dp"
+    android:id="@+id/cardview_pdfList"
+    android:tag="productoTag"
+    android:padding="5dp">
+
+    <GridLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="horizontal"
+        android:padding="9dp"
+        android:columnCount="3">
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="200dp"
+                android:layout_height="wrap_content"
+                android:text="PDF"
+                tools:text="PDF"
+                android:textColor="@color/black"
+                android:textSize="15sp"/>
+
+            <TextView
+                android:id="@+id/txtNombrePDf_Cardview_PDFList"
+                android:layout_width="200dp"
+                android:layout_height="wrap_content"
+                android:text="nombre"
+                tools:text="Politicas de la empresa"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginEnd="10dp"
+                android:maxLength="29"
+                android:singleLine="true"
+                android:ellipsize="end"
+                android:textColor="@color/black"
+                android:textSize="15sp"
+                android:textStyle="bold"/>
+
+        </LinearLayout>
+
+
+
+
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:id="@+id/btnVer_cardviewPDFList"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:backgroundTint="@color/azul_mapa"
+            android:src="@drawable/visibilidad_pdf_icon"
+            android:text="D"
+            android:contentDescription="TODO"
+            android:layout_marginLeft="15dp"
+            />
+
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:id="@+id/btnDescargar_cardviewPDFList"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:backgroundTint="@color/azul_codelco"
+            android:src="@drawable/pdf_descarga_icon"
+            android:text="D"
+            android:contentDescription="TODO"
+            android:layout_marginStart="15dp"
+            android:layout_marginEnd="5dp"
+            android:visibility="gone"
+            />
+
+    </GridLayout>
+
+
+
+
+</androidx.cardview.widget.CardView>

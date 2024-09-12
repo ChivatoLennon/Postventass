@@ -1,0 +1,345 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/mapaFragment_ID"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".ui.slideshow.MapaFragment">
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="280dp"
+            android:layout_gravity="top"
+            android:src="@drawable/barrio_civico_nti_mapa" />
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="230dp"
+            android:layout_gravity="center"
+            android:src="@drawable/tc_tap_mapa" />
+
+        <ImageView
+            android:layout_width="400dp"
+            android:layout_height="255dp"
+            android:layout_gravity="bottom|center"
+            android:background="@drawable/taller_nti_mapa"/>
+
+
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginTop="5dp"
+            android:layout_gravity="center">
+
+
+            <ProgressBar
+                android:id="@+id/progressBar_MapaFragment"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <!-- EMERGENCIA-->
+            <FrameLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="530dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                android:elevation="10dp">
+
+                <com.google.android.material.imageview.ShapeableImageView
+                    android:id="@+id/shapeableImageView_EMERGENCIA_MapaFragment"
+                    android:layout_width="5dp"
+                    android:layout_height="5dp"
+                    android:layout_gravity="center_horizontal|center_vertical"
+                    android:background="#992E2836"
+                    app:shapeAppearance="@style/CircleShape" />
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:layout_gravity="center"
+                    android:elevation="10dp">
+
+                    <TextView
+                        android:id="@+id/txtNombreTitulo_Emergencia_MapaFragment"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:gravity="center"
+                        android:text="Emergencias"
+                        android:textSize="13sp"
+                        android:textStyle="bold"
+                        android:textColor="@color/black"
+                        tools:layout_editor_absoluteX="191dp"
+                        tools:layout_editor_absoluteY="567dp" />
+
+                    <TextView
+                        android:id="@+id/txt_EMERGENCIA_MapaFragment"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:gravity="center"
+                        android:text="0"
+                        android:textSize="25sp"
+                        android:textStyle="bold"
+                        android:textColor="@color/black"
+                        tools:layout_editor_absoluteX="191dp"
+                        tools:layout_editor_absoluteY="567dp" />
+
+                </LinearLayout>
+
+
+            </FrameLayout>
+
+            <!-- Hallazgo Grave-->
+            <FrameLayout
+                android:id="@+id/frameLayout"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical|center_horizontal"
+                android:layout_marginBottom="300dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                android:elevation="10dp">
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:layout_gravity="center"
+                    android:elevation="10dp">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:gravity="center"
+                        android:text="Hallazgos Graves"
+                        android:textSize="13sp"
+                        android:textStyle="bold"
+                        android:textColor="@color/black"
+                        tools:layout_editor_absoluteX="191dp"
+                        tools:layout_editor_absoluteY="567dp" />
+
+                    <TextView
+                        android:id="@+id/txt_AlertaGrave_MapaFragment"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:text="0"
+                        android:textSize="25sp"
+                        android:textStyle="bold"
+                        android:textColor="@color/black"
+                        tools:layout_editor_absoluteX="191dp"
+                        tools:layout_editor_absoluteY="103dp" />
+
+                </LinearLayout>
+
+                <com.google.android.material.imageview.ShapeableImageView
+                    android:id="@+id/shapeableImageView_AlertaGrave_MapaFragment"
+                    android:layout_width="5dp"
+                    android:layout_height="5dp"
+                    android:layout_gravity="center"
+                    android:background="#9A972D24"
+                    app:shapeAppearance="@style/CircleShape"
+                    tools:layout_editor_absoluteX="155dp"
+                    tools:layout_editor_absoluteY="86dp" />
+
+
+            </FrameLayout>
+
+            <!-- Hallazgo leve-->
+            <FrameLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="50dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                android:elevation="10dp">
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:layout_gravity="center"
+                    android:elevation="10dp">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:gravity="center"
+                        android:text="Hallazgos Leves"
+                        android:textSize="13sp"
+                        android:textStyle="bold"
+                        android:textColor="@color/black"
+                        tools:layout_editor_absoluteX="191dp"
+                        tools:layout_editor_absoluteY="567dp"
+                        />
+
+
+                    <TextView
+                        android:id="@+id/txt_AlertaLeve_MapaFragment"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:text="0"
+                        android:textSize="25sp"
+                        android:textStyle="bold"
+                        android:textColor="@color/black"
+                        tools:layout_editor_absoluteX="192dp"
+                        tools:layout_editor_absoluteY="247dp" />
+                </LinearLayout>
+
+                <com.google.android.material.imageview.ShapeableImageView
+                    android:id="@+id/shapeableImageView_AlertaLeve_MapaFragment"
+                    android:layout_width="5dp"
+                    android:layout_height="5dp"
+                    android:layout_gravity="center_horizontal|center_vertical"
+                    android:background="#99AEAE39"
+                    app:shapeAppearance="@style/CircleShape" />
+
+
+            </FrameLayout>
+
+            <!-- Hallazgo positivo-->
+            <FrameLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="200dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                android:elevation="10dp">
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:layout_gravity="center"
+                    android:elevation="10dp">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:gravity="center"
+                        android:text="Hallazgos Positivos"
+                        android:textSize="13sp"
+                        android:textStyle="bold"
+                        android:textColor="@color/black"
+                        tools:layout_editor_absoluteX="191dp"
+                        tools:layout_editor_absoluteY="567dp" />
+
+
+                    <TextView
+                        android:id="@+id/txt_AlertaPositiva_MapaFragment"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:gravity="center"
+                        android:text="0"
+                        android:textSize="25sp"
+                        android:textStyle="bold"
+                        android:textColor="@color/black"
+                        tools:layout_editor_absoluteX="191dp"
+                        tools:layout_editor_absoluteY="403dp" />
+                </LinearLayout>
+
+
+                <com.google.android.material.imageview.ShapeableImageView
+                    android:id="@+id/shapeableImageView_AlertaPositiva_MapaFragment"
+                    android:layout_width="5dp"
+                    android:layout_height="5dp"
+                    android:layout_gravity="center_horizontal|center_vertical"
+                    android:background="#994EAD5B"
+                    app:shapeAppearance="@style/CircleShape" />
+
+
+            </FrameLayout>
+
+
+            <!-- oportunidad de mejora-->
+            <FrameLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="155dp"
+                android:layout_marginTop="500dp"
+                android:layout_marginEnd="156dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                android:elevation="10dp">
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:layout_gravity="center"
+                    android:elevation="10dp">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:gravity="center"
+                        android:text="Oportunidad de mejora"
+                        android:textSize="13sp"
+                        android:textStyle="bold"
+                        android:textColor="@color/black"
+                        tools:layout_editor_absoluteX="191dp"
+                        tools:layout_editor_absoluteY="567dp"
+                        />
+
+                    <TextView
+                        android:id="@+id/txt_OportunidadMejora_MapaFragment"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:gravity="center"
+                        android:text="0"
+                        android:textSize="25sp"
+                        android:textStyle="bold"
+                        android:textColor="@color/black"
+                        tools:layout_editor_absoluteX="191dp"
+                        tools:layout_editor_absoluteY="567dp" />
+                </LinearLayout>
+
+                <com.google.android.material.imageview.ShapeableImageView
+                    android:id="@+id/shapeableImageView_OportunidadMejora_MapaFragment"
+                    android:layout_width="5dp"
+                    android:layout_height="5dp"
+                    android:layout_gravity="center_horizontal|center_vertical"
+                    android:background="#992F6EBA"
+                    app:shapeAppearance="@style/CircleShape" />
+
+
+            </FrameLayout>
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </FrameLayout>
+
+
+</FrameLayout>

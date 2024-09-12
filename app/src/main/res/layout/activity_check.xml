@@ -1,0 +1,233 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_margin="15dp"
+    android:padding="0dp"
+    tools:context=".ui.perfil.CheckActivity">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginBottom="8dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="15dp"
+                android:layout_marginBottom="30dp"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/txtID_label_CheckActivity"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/edittext_border"
+                    android:backgroundTint="#72209EB0"
+                    android:padding="10dp"
+                    android:text="ID"
+                    android:textAlignment="center"
+                    android:textSize="20sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/txtID_CheckActivity"
+                    android:layout_width="80dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="10dp"
+                    android:background="@drawable/edittext_border"
+                    android:backgroundTint="#72209EB0"
+                    android:padding="10dp"
+                    android:text="vacio"
+                    android:textAlignment="center"
+                    android:textSize="20sp"
+                    android:textStyle="bold" />
+
+            </LinearLayout>
+
+            <!-- Control de riesgo -->
+            <Spinner
+                android:id="@+id/spinner_ControlRiesgo_CheckACtivity"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:layout_margin="20dp"
+                android:layout_marginTop="20dp"
+                android:background="@drawable/edittext_border"
+                android:backgroundTint="#72209EB0"
+                android:hint="Ingrese Sector"
+                android:inputType="text"
+                android:spinnerMode="dialog" />
+
+            <!-- Deadline -->
+            <Spinner
+                android:id="@+id/spinner_Deadline_CheckACtivity"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:layout_margin="20dp"
+                android:layout_marginTop="20dp"
+                android:background="@drawable/edittext_border"
+                android:backgroundTint="#72209EB0"
+                android:hint="Ingrese Sector"
+                android:inputType="text"
+                android:spinnerMode="dialog" />
+
+            <!-- Responsable OCULTO -->
+            <Spinner
+                android:id="@+id/spinner_Responsable_CheckACtivity"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:layout_margin="20dp"
+                android:layout_marginTop="20dp"
+                android:background="@drawable/edittext_border"
+                android:backgroundTint="#72209EB0"
+                android:hint="Ingrese Sector"
+                android:inputType="text"
+                android:spinnerMode="dialog"
+                android:visibility="gone" />
+
+            <TextView
+                android:id="@+id/txtDETALLE_label_checkActivity"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:background="@drawable/edittext_border"
+                android:backgroundTint="#72209EB0"
+                android:padding="10dp"
+                android:text="Detalle"
+                android:textAlignment="center"
+                android:textSize="20sp"
+                android:textStyle="bold" />
+
+            <ProgressBar
+                android:id="@+id/progressBar_CheckActivity"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center" />
+
+            <TextView
+                android:id="@+id/txtDetallesVER_CheckActivity"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:background="@drawable/edittext_border"
+                android:padding="5dp"
+                android:text="Este es un ejemplo" />
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/editText_Detalle_CheckActivity"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:hint="Ingrese los detalles para este nuevo ticket"
+                app:boxBackgroundColor="@color/white"
+                app:counterEnabled="true"
+                app:counterMaxLength="5000">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="textMultiLine|textCapSentences"
+                    android:maxLength="5000" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:orientation="vertical">
+
+                <Button
+                    android:id="@+id/btnCrearTicket_CheckActivity"
+                    android:layout_width="290dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginTop="20dp"
+                    android:backgroundTint="@color/azul_codelco"
+                    android:text="Crear nuevo ticket de esta alerta"
+                    android:textColor="@color/black" />
+
+                <Button
+                    android:id="@+id/btnGuardarCambiosTicket_CheckActivity"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginTop="5dp"
+                    android:backgroundTint="@color/azul_codelco"
+                    android:text="Guardar cambios de este ticket"
+                    android:textColor="@color/black" />
+
+                <LinearLayout
+                    android:id="@+id/linearLayout_CerrarDerivar_CheckActivity"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_margin="2dp"
+                    android:orientation="vertical">
+
+                    <Button
+                        android:id="@+id/btnCerrar_CheckActivity"
+                        android:layout_width="290dp"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_margin="5dp"
+                        android:backgroundTint="@color/azul_codelco"
+                        android:text="Cerrar alerta(Genera ticket Cerrado)"
+                        android:textColor="@color/black" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:text="¿La alerta no es para ti? Derive"
+                        android:textSize="12sp" />
+
+                    <Button
+                        android:id="@+id/btnDerivar_CheckActivity"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_margin="5dp"
+                        android:backgroundTint="@color/azul_codelco"
+                        android:text="Derivar Alerta"
+                        android:textColor="@color/black" />
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:orientation="vertical">
+
+                        <Spinner
+                            android:id="@+id/spinnerDerivarSupervisor_CheckActivity"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:spinnerMode="dialog" />
+
+
+                    </LinearLayout>
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+    </ScrollView>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

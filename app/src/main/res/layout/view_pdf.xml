@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <com.pdfview.PDFView
+            android:id="@+id/pdfView"
+            android:layout_width="350dp"
+            android:layout_height="590dp"/>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_gravity="center">
+
+            <com.google.android.material.floatingactionbutton.FloatingActionButton
+                android:id="@+id/btnFirmar_PDFModal"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_margin="16dp"
+                android:src="@drawable/ic_firma"/>
+
+            <com.google.android.material.floatingactionbutton.FloatingActionButton
+                android:id="@+id/btnDescargar_PDFModal"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_alignParentEnd="true"
+                android:layout_alignParentBottom="true"
+                android:layout_margin="16dp"
+                android:src="@drawable/documento_icon"/>
+
+
+        </LinearLayout>
+
+        <EditText
+            android:id="@+id/txtNombrePDF_aSubir_view_pdfFragment"
+            android:layout_width="290dp"
+            android:layout_height="40dp"
+            android:background="@drawable/edittext_border"
+            android:layout_gravity="center_horizontal"
+            android:layout_margin="5dp"
+            android:hint="ingrese nombre PDF a guardar"
+            android:padding="10dp"
+            android:inputType="text"/>
+
+
+
+    </LinearLayout>
+
+</FrameLayout>

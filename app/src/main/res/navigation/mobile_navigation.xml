@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/mobile_navigation"
+    app:startDestination="@+id/nav_home">
+
+    <fragment
+        android:id="@+id/nav_home"
+        android:name="com.example.postventaandroid.ui.home.HomeFragment"
+        android:label="@string/menu_home"
+        tools:layout="@layout/fragment_home">
+
+        <!--Estos actions solamente son para
+         dibujar las lineas en el Graph, no les di ningun uso-->
+        <action
+            android:id="@+id/action_nav_home_to_nav_detalleEvento"
+            app:destination="@id/nav_documentos" />
+        <action
+            android:id="@+id/action_nav_home_to_nav_miPerfil"
+            app:destination="@id/nav_miPerfil" />
+        <action
+            android:id="@+id/action_nav_home_to_nav_soporteTecnico"
+            app:destination="@id/nav_soporteTecnico" />
+        <action
+            android:id="@+id/action_nav_home_to_nav_configuracion"
+            app:destination="@id/nav_configuracion" />
+        <action
+            android:id="@+id/action_nav_home_to_nav_slideshow"
+            app:destination="@id/nav_slideshow" />
+        <action
+            android:id="@+id/action_nav_home_to_nav_gallery"
+            app:destination="@id/nav_gallery" />
+        <action
+            android:id="@+id/action_nav_home_to_nav_panelDeControl"
+            app:destination="@id/nav_panelDeControl" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/nav_gallery"
+        android:name="com.example.postventaandroid.ui.gallery.GalleryFragment"
+        android:label="@string/menu_gallery"
+        tools:layout="@layout/fragment_gallery" />
+
+    <fragment
+        android:id="@+id/nav_slideshow"
+        android:name="com.example.postventaandroid.ui.slideshow.SlideshowFragment"
+        android:label="@string/menu_slideshow"
+        tools:layout="@layout/fragment_slideshow">
+        <action
+            android:id="@+id/action_nav_slideshow_to_mapaFragment"
+            app:destination="@id/mapaFragment" />
+        <action
+            android:id="@+id/action_nav_slideshow_to_datosMapaFragment"
+            app:destination="@id/datosMapaFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/nav_panelDeControl"
+        android:name="com.example.postventaandroid.ui.panelDeControl.PanelDeControl"
+        android:label="@string/menu_panelDeControl"
+        tools:layout="@layout/fragment_panel_de_control" />
+    <fragment
+        android:id="@+id/nav_configuracion"
+        android:name="com.example.postventaandroid.ui.configuration.ConfiguracionFragment"
+        android:label="@string/menu_configuration" />
+    <fragment
+        android:id="@+id/nav_soporteTecnico"
+        android:name="com.example.postventaandroid.ui.soporteTecnico.SoporteTecnico"
+        android:label="@string/menu_soporteTecnico"
+        tools:layout="@layout/fragment_soporte_tecnico" />
+    <fragment
+        android:id="@+id/nav_documentos"
+        android:name="com.example.postventaandroid.ui.documentos.DocumentosFragment"
+        android:label="@string/tittle_detalleEvento"
+        tools:layout="@layout/fragment_documentos" />
+    <fragment
+        android:id="@+id/nav_miPerfil"
+        android:name="com.example.postventaandroid.ui.perfil.MiPerfilFragment"
+        android:label="@string/tittle_miperfil"
+        tools:layout="@layout/fragment_mi_perfil">
+        <action
+            android:id="@+id/action_nav_miPerfil_to_historialFragment"
+            app:destination="@id/historialFragment" />
+        <action
+            android:id="@+id/action_nav_miPerfil_to_gestionFragment"
+            app:destination="@id/gestionFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/mapaFragment"
+        android:name="com.example.postventaandroid.ui.slideshow.MapaFragment"
+        android:label="@string/menu_MapaFragment"
+        tools:layout="@layout/fragment_mapa" />
+    <fragment
+        android:id="@+id/historialFragment"
+        android:name="com.example.postventaandroid.ui.perfil.HistorialFragment"
+        android:label="@string/menu_HistorialFragment"
+        tools:layout="@layout/fragment_historial" />
+    <fragment
+        android:id="@+id/gestionFragment"
+        android:name="com.example.postventaandroid.ui.perfil.GestionFragment"
+        android:label="Tickets Disponibles"
+        tools:layout="@layout/fragment_gestion" >
+        <action
+            android:id="@+id/action_gestionFragment_to_historialTickets"
+            app:destination="@id/historialTickets" />
+    </fragment>
+    <fragment
+        android:id="@+id/datosMapaFragment"
+        android:name="com.example.postventaandroid.ui.slideshow.DatosMapaFragment"
+        android:label="Hallazgos por Sector"
+        tools:layout="@layout/fragment_datos_mapa" />
+    <fragment
+        android:id="@+id/historialTickets"
+        android:name="com.example.postventaandroid.ui.perfil.HistorialTickets"
+        android:label="Todo el historial de Tickets "
+        tools:layout="@layout/fragment_historial_tickets" />
+
+
+</navigation>

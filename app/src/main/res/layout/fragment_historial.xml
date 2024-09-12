@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".ui.perfil.HistorialFragment">
+
+
+    <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
+        android:id="@+id/swipeRefresh_HistorialFragment"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_margin="2dp"
+                android:text="Todas mis Alertas"
+                android:textSize="28sp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_margin="5dp"
+                android:layout_marginBottom="10dp"
+                android:text="Para actualizar lista, deslice hacia abajo en este punto"
+                android:textSize="16sp" />
+
+
+            <Button
+                android:id="@+id/btnActualizarDatos_FragmentHistorial"
+                android:layout_width="200dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:backgroundTint="@color/azul_codelco"
+                android:text="Actualizar datos"
+                android:visibility="gone" />
+
+
+            <SearchView
+                android:id="@+id/txtBuscador_HistorialFragment"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="5dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginBottom="10dp"
+                android:background="@drawable/edittext_border"
+                android:elevation="10dp"
+                android:iconifiedByDefault="false"
+                android:inputType="number"
+                android:queryBackground="@android:color/transparent"
+                android:queryHint="Ingrese ID del hallazgo" />
+
+            <ProgressBar
+                android:id="@+id/progressBar_HistorialFragment"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginTop="5dp" />
+
+            <Spinner
+                android:id="@+id/spinnerPantallas_HistorialFragment"
+                android:layout_width="340dp"
+                android:layout_height="37dp"
+                android:layout_gravity="center"
+                android:layout_margin="5dp"
+                android:background="@drawable/edittext_border"
+                android:spinnerMode="dropdown"
+                android:textAlignment="center" />
+
+            <TextView
+                android:id="@+id/txtHistorialNoDisponible_HistorialFragment"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:text="Historial no disponible" />
+
+            <LinearLayout
+                android:id="@+id/recyclerView_linearlayout_HistorialFragment"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_gravity="center"
+                android:layout_marginTop="5dp"
+                android:orientation="vertical">
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/recyclerView_HistorialFragment"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent" />
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+
+    </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
+
+
+</LinearLayout>

@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="purple_200">#FFBB86FC</color>
+    <color name="purple_500">#FF6200EE</color>
+    <color name="purple_700">#FF3700B3</color>
+    <color name="teal_200">#FF03DAC5</color>
+    <color name="teal_700">#FF018786</color>
+    <color name="black">#FF000000</color>
+    <color name="white">#FFFFFFFF</color>
+    <color name="lavender_web">#90F3FF</color>
+    <color name="naranjo_codelco">#F49A50</color>
+    <color name="color_app_barmain">#f4a700</color>
+    <color name="color_nav_header_main">#E65412</color>
+    <color name="verde">#67E30F</color>
+    <color name="red">#FF0000</color>
+    <color name="azul_codelco">#209eb0</color>
+
+    <!--Para hallazgos Mapa-->
+    <color name="rojo_mapa">#972D24</color>
+    <color name="amarillo_mapa">#AEAE39</color>
+    <color name="verde_mapa">#4ead5b</color>
+    <color name="azul_mapa">#2f6eba</color>
+</resources>
