@@ -100,5 +100,5 @@ dependencies {
 
 //    Si da error cambiar el nombre 'HARDMACHINE' al nombre de usuario de la pc en la cual se ejecuta este codigo
 //    PARA CONEXION SQL server
-    implementation(files("C:/Users/HARDMACHINE/AndroidStudioProjects/PostVentaAndroid/app/libs/jtds-1.3.1.jar"))
+    implementation(files("C:/Users/chivo/Desktop/promt/PostVentaAndroid/app/libs/jtds-1.3.1.jar"))
 }
