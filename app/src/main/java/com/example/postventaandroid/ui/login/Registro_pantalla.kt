@@ -5,6 +5,7 @@ import android.app.Activity
 import android.content.Context
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import android.util.Patterns
 import android.view.View
 import android.view.inputmethod.InputMethodManager
@@ -33,6 +34,10 @@ import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 import java.sql.SQLException
+import java.util.*
+import javax.mail.*
+import javax.mail.internet.InternetAddress
+import javax.mail.internet.MimeMessage
 
 
 class Registro_pantalla : AppCompatActivity() {
@@ -46,12 +51,15 @@ class Registro_pantalla : AppCompatActivity() {
     private lateinit var txtCorreo: EditText
     private lateinit var txtContrasena: EditText
     private lateinit var txtConfirmarContrasena: EditText
+    private lateinit var txtOtp: EditText
     private lateinit var txtGuardandoPDF_firmado : TextView
 
     private lateinit var checkboxTerminos: CheckBox
     private lateinit var checkBoxPoliticas: CheckBox
 
     private lateinit var btnRegistrarse: Button
+    private lateinit var btnOtp: Button
+
 
     private lateinit var txtLeerTerminos: TextView
     private lateinit var txtVerPoliticasEmpresa: TextView
@@ -86,6 +94,7 @@ class Registro_pantalla : AppCompatActivity() {
         checkBoxPoliticas = findViewById(R.id.checkBoxPoliticasEmpresa_RegistroPantalla)
 
         btnRegistrarse = findViewById(R.id.btnRegistrarse_RegistroPantalla)
+        btnOtp = findViewById(R.id.btnEnviar)
 
         txtGuardandoPDF_firmado = findViewById(R.id.txtGuardandoPDF_firmado_MiPerfilFragment)
         txtLeerTerminos = findViewById(R.id.txtLeerTerminos_RegistroPantalla)
@@ -96,6 +105,7 @@ class Registro_pantalla : AppCompatActivity() {
         txtContrasena = findViewById(R.id.txt_contrasena_acitivityRegistro)
         txtConfirmarContrasena = findViewById(R.id.txt_confirmacionContrasena_acitivityRegistro)
         txtRut = findViewById(R.id.txt_Rut_acitivityRegistro)
+        txtOtp = findViewById(R.id.txtOtp)
         spinnerRut_digito = findViewById(R.id.txt_RutDigito_acitivityRegistro)
 
 
@@ -156,6 +166,20 @@ class Registro_pantalla : AppCompatActivity() {
 
             pdfModal.show()
             pdfModal.ocultarBtnDescargaPDF()
+        }
+        btnOtp.setOnClickListener() {
+            lifecycleScope.launch(Dispatchers.IO) {
+                try {
+                    val otp : String = generarOTP()
+                    enviarOtpPorCorreo(txtOtp.text.toString(), otp)
+                } catch (e: Exception) {
+                    e.printStackTrace()
+                    // Switch back to the main thread to show the Toast
+                    withContext(Dispatchers.Main) {
+                        Toast.makeText(this@Registro_pantalla, "Error al generar o enviar OTP", Toast.LENGTH_SHORT).show()
+                    }
+                }
+            }
         }
 
 
@@ -230,40 +254,55 @@ class Registro_pantalla : AppCompatActivity() {
             return false
         }
     }
-    private fun registrarNuevoUsuario(){
+    private fun registrarNuevoUsuario() {
         val email = txtCorreo.text.toString()
         val rutSinDigitoVerificador = txtRut.editText!!.text.length
         progressBar.visibility = View.VISIBLE
         lifecycleScope.launch {
-            if (rutSinDigitoVerificador >= 8){
+            if (rutSinDigitoVerificador >= 8) {
                 txtRut.error = null
                 if (!consultarRutSQL()) {
                     if (validarEmail(email)) {
                         if (validarRut(txtRut.editText!!.text.toString(), opcionSpinnerDigito)) {
-                            // Continuar con el registro
                             if (!consultarCorreoSQL()) {
-                                if ((validarContrasena())) {
-                                    if (!validarDatos()){
+                                if (validarContrasena()) {
+                                    if (!validarDatos()) {
                                         if (checkboxTerminos.isChecked && checkBoxPoliticas.isChecked) {
-                                            if (registrarUsuarioSQL()) {
-                                                progressBar.visibility = View.GONE
-                                                mensaje("Registro exitoso")
-                                                finish()
+                                            if (txtOtp.text.toString().isNotEmpty()) {
+                                                if (txtOtp.text.toString().length == 6) {
+                                                    if (txtOtp.text.toString() == obtenerOtpDelUsuario()) {
+                                                        if (registrarUsuarioSQL()) {
+                                                            progressBar.visibility = View.GONE
+                                                            mensaje("Usuario registrado")
+
+                                                        } else {
+                                                            progressBar.visibility = View.GONE
+                                                            mensaje("Error al registrar usuario")
+                                                        }
+                                                    } else {
+                                                        progressBar.visibility = View.GONE
+                                                        Log.d("OTP Incorrecto", "OTP Generado: ${txtOtp.text.toString()} - OTP Text: ${obtenerOtpDelUsuario()}")
+                                                        mensaje("OTP incorrecto")
+                                                    }
+                                                } else {
+                                                    progressBar.visibility = View.GONE
+                                                    mensaje("OTP debe tener 6 dígitos")
+                                                }
                                             } else {
                                                 progressBar.visibility = View.GONE
-                                                mensaje("Error al registrar usuario. Intente de nuevo")
+                                                mensaje("Debe ingresar OTP")
                                             }
                                         } else {
                                             progressBar.visibility = View.GONE
-                                            mensaje("Debe aceptar Politicas de empresa, terminos y condiciones.")
+                                            mensaje("Debe aceptar Políticas de empresa, términos y condiciones.")
                                         }
-                                    }else{
+                                    } else {
                                         progressBar.visibility = View.GONE
                                         mensaje("Faltan datos por ingresar")
                                     }
                                 } else {
                                     progressBar.visibility = View.GONE
-                                    //mensaje("Confirme contraseñas iguales")
+                                    mensaje("Las contraseñas no coinciden")
                                 }
                             } else {
                                 progressBar.visibility = View.GONE
@@ -271,23 +310,67 @@ class Registro_pantalla : AppCompatActivity() {
                             }
                         } else {
                             progressBar.visibility = View.GONE
-                            mensaje("Formato de Email invalido")
+                            mensaje("RUT Inválido")
                         }
                     } else {
                         progressBar.visibility = View.GONE
-                        mensaje("Ya existe RUT o faltan datos")
+                        mensaje("Correo no válido")
                     }
-                }else{
+                } else {
                     progressBar.visibility = View.GONE
-                    txtRut.error = "Campo Rut incompleto"
-                    mensaje("Campo Rut incompleto")
+                    mensaje("El RUT ya existe")
                 }
-                        } else {
-                            progressBar.visibility = View.GONE
-                            mensaje("RUT inválido")
-                        }
-
+            } else {
+                progressBar.visibility = View.GONE
+                mensaje("RUT Inválido")
+            }
         }
+    }
+
+    // OTP Generation (Random 6-digit number)
+    private fun generarOTP(): String {
+        val random = Random()
+        return String.format("%06d", random.nextInt(999999))
+    }
+
+    // Send OTP via email using JavaMail
+    private fun enviarOtpPorCorreo(correo: String, otp: String) {
+        Log.d("enviarOtpPorCorreo", "Iniciando envío de OTP")
+        val login : String = "CORREO@CORREO.COM" // USAR CORREO CREADO
+        val password : String = "clave" // USAR CLAVE CREADA
+        val properties = Properties()
+        properties["mail.smtp.host"] = "smtp.gmail.com"
+        properties["mail.smtp.port"] = "587"
+        properties["mail.smtp.auth"] = "true"
+        properties["mail.smtp.starttls.enable"] = "true"
+
+        val session = Session.getInstance(properties, object : Authenticator() {
+            override fun getPasswordAuthentication(): PasswordAuthentication {
+                return PasswordAuthentication(login, password)
+            }
+        })
+
+        try {
+            Log.d("enviarOtpPorCorreo", "Preparando mensaje de correo electrónico")
+            val message = MimeMessage(session)
+            message.setFrom(InternetAddress(login)) // Use a valid email address
+            message.setRecipients(Message.RecipientType.TO, InternetAddress.parse(correo))
+            message.subject = "Tú Código de Verificación de App Prevención"
+            message.setText("Tú Codigo de Verificación es: $otp")
+
+            Log.d("enviarOtpPorCorreo", "Enviando mensaje de correo electrónico")
+            Transport.send(message)
+            Log.d("enviarOtpPorCorreo", "Mensaje de correo electrónico enviado exitosamente")
+        } catch (e: MessagingException) {
+            Log.e("enviarOtpPorCorreo", "Error al enviar mensaje de correo electrónico", e)
+        }
+    }
+
+    // OTP Verification UI (mockup, implement in your app's UI)
+
+    // Mockup function for user OTP input (replace with actual input method)
+    private fun obtenerOtpDelUsuario(): String {
+        return txtOtp.text.toString()// Simulated user input
     }
 
     private fun spinnerDigitoOptions(itemSeleccionada: String, indiceSeleccionado: Int) {
