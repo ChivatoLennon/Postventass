@@ -35,7 +35,6 @@ class ConnSQL {
         } catch (ex2: Exception) {
             Log.e("Error 3 excepcion", ex2.message!!)
         }
-
         return conn
     }
 
