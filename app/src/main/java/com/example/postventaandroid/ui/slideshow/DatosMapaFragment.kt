@@ -107,8 +107,6 @@ class DatosMapaFragment : Fragment() {
                 }
             }
         }
-
-
         return root
     }
 
