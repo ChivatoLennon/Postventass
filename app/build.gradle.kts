@@ -62,6 +62,10 @@ dependencies {
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
+    implementation(files("libs/jtds-1.3.1.jar"))
+    implementation(files("libs/activation.jar"))
+    implementation(files("libs/additionnal.jar"))
+    implementation(files("libs/mail.jar"))
 
     //Firebase implementacion notificaciones mejoradas
     implementation(platform("com.google.firebase:firebase-bom:33.1.2"))
@@ -100,5 +104,6 @@ dependencies {
 
 //    Si da error cambiar el nombre 'HARDMACHINE' al nombre de usuario de la pc en la cual se ejecuta este codigo
 //    PARA CONEXION SQL server
-    implementation(files("C:/Users/HARDMACHINE/AndroidStudioProjects/PostVentaAndroid/app/libs/jtds-1.3.1.jar"))
+    implementation(files("C:/Users/stgom/Documents/GitHub/Postventass/app/libs/jtds-1.3.1.jar"))
 }
+

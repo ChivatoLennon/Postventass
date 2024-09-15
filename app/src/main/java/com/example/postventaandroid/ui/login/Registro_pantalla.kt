@@ -215,7 +215,21 @@ class Registro_pantalla : AppCompatActivity() {
                 }
             }
     }
-
+    private fun validarRut(rut: String, dv: String): Boolean {
+        try {
+            var rutTemp = rut.toInt()
+            var m = 0
+            var s = 1
+            while (rutTemp != 0) {
+                s = (s + rutTemp % 10 * (9 - m++ % 6)) % 11
+                rutTemp /= 10
+            }
+            val checkDigit = if (s != 0) (s - 1).toString() else "k"
+            return dv.equals(checkDigit, ignoreCase = true)
+        } catch (e: NumberFormatException) {
+            return false
+        }
+    }
     private fun registrarNuevoUsuario(){
         val email = txtCorreo.text.toString()
         val rutSinDigitoVerificador = txtRut.editText!!.text.length
@@ -225,47 +239,54 @@ class Registro_pantalla : AppCompatActivity() {
                 txtRut.error = null
                 if (!consultarRutSQL()) {
                     if (validarEmail(email)) {
-                        if (!consultarCorreoSQL()) {
-                            if ((validarContrasena())) {
-                                if (!validarDatos()){
-                                    if (checkboxTerminos.isChecked && checkBoxPoliticas.isChecked) {
-                                        if (registrarUsuarioSQL()) {
-                                            progressBar.visibility = View.GONE
-                                            mensaje("Registro exitoso")
-                                            finish()
+                        if (validarRut(txtRut.editText!!.text.toString(), opcionSpinnerDigito)) {
+                            // Continuar con el registro
+                            if (!consultarCorreoSQL()) {
+                                if ((validarContrasena())) {
+                                    if (!validarDatos()){
+                                        if (checkboxTerminos.isChecked && checkBoxPoliticas.isChecked) {
+                                            if (registrarUsuarioSQL()) {
+                                                progressBar.visibility = View.GONE
+                                                mensaje("Registro exitoso")
+                                                finish()
+                                            } else {
+                                                progressBar.visibility = View.GONE
+                                                mensaje("Error al registrar usuario. Intente de nuevo")
+                                            }
                                         } else {
                                             progressBar.visibility = View.GONE
-                                            mensaje("Error al registrar usuario. Intente de nuevo")
+                                            mensaje("Debe aceptar Politicas de empresa, terminos y condiciones.")
                                         }
-                                    } else {
+                                    }else{
                                         progressBar.visibility = View.GONE
-                                        mensaje("Debe aceptar Politicas de empresa, terminos y condiciones.")
+                                        mensaje("Faltan datos por ingresar")
                                     }
-                                }else{
+                                } else {
                                     progressBar.visibility = View.GONE
-                                    mensaje("Faltan datos por ingresar")
+                                    //mensaje("Confirme contraseñas iguales")
                                 }
                             } else {
                                 progressBar.visibility = View.GONE
-                                //mensaje("Confirme contraseñas iguales")
+                                mensaje("Correo ya existe")
                             }
                         } else {
                             progressBar.visibility = View.GONE
-                            mensaje("Correo ya existe")
+                            mensaje("Formato de Email invalido")
                         }
                     } else {
                         progressBar.visibility = View.GONE
-                        mensaje("Formato de Email invalido")
+                        mensaje("Ya existe RUT o faltan datos")
                     }
-                } else {
+                }else{
                     progressBar.visibility = View.GONE
-                    mensaje("Ya existe RUT o faltan datos")
+                    txtRut.error = "Campo Rut incompleto"
+                    mensaje("Campo Rut incompleto")
                 }
-            }else{
-                progressBar.visibility = View.GONE
-                txtRut.error = "Campo Rut incompleto"
-                mensaje("Campo Rut incompleto")
-            }
+                        } else {
+                            progressBar.visibility = View.GONE
+                            mensaje("RUT inválido")
+                        }
+
         }
     }
 
