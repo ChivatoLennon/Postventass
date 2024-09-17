@@ -256,74 +256,75 @@ class Registro_pantalla : AppCompatActivity() {
     }
     private fun registrarNuevoUsuario() {
         val email = txtCorreo.text.toString()
-        val rutSinDigitoVerificador = txtRut.editText!!.text.length
-        progressBar.visibility = View.VISIBLE
-        lifecycleScope.launch {
-            if (rutSinDigitoVerificador >= 8) {
-                txtRut.error = null
-                if (!consultarRutSQL()) {
-                    if (validarEmail(email)) {
-                        if (validarRut(txtRut.editText!!.text.toString(), opcionSpinnerDigito)) {
-                            if (!consultarCorreoSQL()) {
-                                if (validarContrasena()) {
-                                    if (!validarDatos()) {
-                                        if (checkboxTerminos.isChecked && checkBoxPoliticas.isChecked) {
-                                            if (txtOtp.text.toString().isNotEmpty()) {
-                                                if (txtOtp.text.toString().length == 6) {
-                                                    if (txtOtp.text.toString() == obtenerOtpDelUsuario()) {
-                                                        if (registrarUsuarioSQL()) {
-                                                            progressBar.visibility = View.GONE
-                                                            mensaje("Usuario registrado")
+        val rut = txtRut.editText!!.text.toString()
+        val otp = txtOtp.text.toString()
 
-                                                        } else {
-                                                            progressBar.visibility = View.GONE
-                                                            mensaje("Error al registrar usuario")
-                                                        }
-                                                    } else {
-                                                        progressBar.visibility = View.GONE
-                                                        Log.d("OTP Incorrecto", "OTP Generado: ${txtOtp.text.toString()} - OTP Text: ${obtenerOtpDelUsuario()}")
-                                                        mensaje("OTP incorrecto")
-                                                    }
-                                                } else {
-                                                    progressBar.visibility = View.GONE
-                                                    mensaje("OTP debe tener 6 dígitos")
-                                                }
-                                            } else {
-                                                progressBar.visibility = View.GONE
-                                                mensaje("Debe ingresar OTP")
-                                            }
-                                        } else {
-                                            progressBar.visibility = View.GONE
-                                            mensaje("Debe aceptar Políticas de empresa, términos y condiciones.")
-                                        }
-                                    } else {
-                                        progressBar.visibility = View.GONE
-                                        mensaje("Faltan datos por ingresar")
-                                    }
-                                } else {
-                                    progressBar.visibility = View.GONE
-                                    mensaje("Las contraseñas no coinciden")
-                                }
-                            } else {
-                                progressBar.visibility = View.GONE
-                                mensaje("Correo ya existe")
-                            }
-                        } else {
-                            progressBar.visibility = View.GONE
-                            mensaje("RUT Inválido")
-                        }
-                    } else {
-                        progressBar.visibility = View.GONE
-                        mensaje("Correo no válido")
-                    }
-                } else {
-                    progressBar.visibility = View.GONE
-                    mensaje("El RUT ya existe")
-                }
+        progressBar.visibility = View.VISIBLE
+
+        lifecycleScope.launch {
+            if (!validarDatosUsuario(email, rut, otp)) {
+                progressBar.visibility = View.GONE
+                return@launch
+            }
+
+            if (registrarUsuarioSQL()) {
+                progressBar.visibility = View.GONE
+                mensaje("Usuario registrado")
             } else {
                 progressBar.visibility = View.GONE
-                mensaje("RUT Inválido")
+                mensaje("Error al registrar usuario")
             }
+        }
+
+    }
+    private suspend fun validarDatosUsuario(email: String, rut: String, otp: String): Boolean {
+        return when {
+            rut.length <= 8 -> {
+                mensaje("RUT Inválido")
+                false
+            }
+            !consultarRutSQL() -> {
+                mensaje("El RUT ya existe")
+                false
+            }
+            !validarEmail(email) -> {
+                mensaje("Correo no válido")
+                false
+            }
+            !validarRut(rut, opcionSpinnerDigito) -> {
+                mensaje("RUT Inválido")
+                false
+            }
+            consultarCorreoSQL() -> {
+                mensaje("Correo ya existe")
+                false
+            }
+            !validarContrasena() -> {
+                mensaje("Las contraseñas no coinciden")
+                false
+            }
+            !validarDatos() -> {
+                mensaje("Faltan datos por ingresar")
+                false
+            }
+            !checkboxTerminos.isChecked || !checkBoxPoliticas.isChecked -> {
+                mensaje("Debe aceptar Políticas de empresa, términos y condiciones.")
+                false
+            }
+            otp.isEmpty() -> {
+                mensaje("Debe ingresar OTP")
+                false
+            }
+            otp.length != 6 -> {
+                mensaje("OTP debe tener 6 dígitos")
+                false
+            }
+            otp != obtenerOtpDelUsuario() -> {
+                Log.d("OTP Incorrecto", "OTP Generado: $otp - OTP Text: ${obtenerOtpDelUsuario()}")
+                mensaje("OTP incorrecto")
+                false
+            }
+            else -> true
         }
     }
 
