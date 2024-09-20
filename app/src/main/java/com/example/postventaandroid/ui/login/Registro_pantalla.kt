@@ -38,6 +38,7 @@ import java.util.*
 import javax.mail.*
 import javax.mail.internet.InternetAddress
 import javax.mail.internet.MimeMessage
+import javax.mail.internet.AddressException
 
 
 class Registro_pantalla : AppCompatActivity() {
@@ -167,21 +168,30 @@ class Registro_pantalla : AppCompatActivity() {
             pdfModal.show()
             pdfModal.ocultarBtnDescargaPDF()
         }
+
         btnOtp.setOnClickListener() {
             lifecycleScope.launch(Dispatchers.IO) {
                 try {
-                    val otp : String = generarOTP()
-                    enviarOtpPorCorreo(txtOtp.text.toString(), otp)
+                    val correo = txtCorreo.text.toString() // Obtener correo desde el campo de entrada
+                    // Validar que el correo no esté vacío y tenga un formato válido
+                    if (correo.isBlank() || !validarEmail(correo)) {
+                        withContext(Dispatchers.Main) {
+                            Toast.makeText(this@Registro_pantalla, "Correo no válido o vacío", Toast.LENGTH_SHORT).show()
+                        }
+                        return@launch
+                    }
+
+                    val otp: String = generarOTP() // Generar OTP
+                    enviarOtpPorCorreo(correo, otp) // Enviar OTP al correo válido
                 } catch (e: Exception) {
                     e.printStackTrace()
-                    // Switch back to the main thread to show the Toast
+                    // Cambiar a la interfaz principal para mostrar el Toast
                     withContext(Dispatchers.Main) {
                         Toast.makeText(this@Registro_pantalla, "Error al generar o enviar OTP", Toast.LENGTH_SHORT).show()
                     }
                 }
             }
         }
-
 
         btnRegistrarse.setOnClickListener() {
             registrarNuevoUsuario()
@@ -254,6 +264,7 @@ class Registro_pantalla : AppCompatActivity() {
             return false
         }
     }
+    /*
     private fun registrarNuevoUsuario() {
         val email = txtCorreo.text.toString()
         val rut = txtRut.editText!!.text.toString()
@@ -279,7 +290,7 @@ class Registro_pantalla : AppCompatActivity() {
     }
     private suspend fun validarDatosUsuario(email: String, rut: String, otp: String): Boolean {
         return when {
-            rut.length <= 8 -> {
+            rut.length < 8 -> {
                 mensaje("RUT Inválido")
                 false
             }
@@ -327,7 +338,52 @@ class Registro_pantalla : AppCompatActivity() {
             else -> true
         }
     }
+*/
+    private fun registrarNuevoUsuario() {
+        val email = txtCorreo.text.toString()
+        val rut = txtRut.editText!!.text.toString()
+        val otpUsuario = txtOtp.text.toString()
 
+        mostrarProgreso(true)
+
+        lifecycleScope.launch {
+            // Validaciones iniciales
+            if (rut.length < 8) return@launch finalizarRegistroConError("RUT Inválido")
+            if (!validarEmail(email)) return@launch finalizarRegistroConError("Correo no válido")
+            if (!validarRut(rut, opcionSpinnerDigito)) return@launch finalizarRegistroConError("RUT Inválido")
+            if (otpUsuario.isEmpty()) return@launch finalizarRegistroConError("Debe ingresar OTP")
+            if (otpUsuario.length != 6) return@launch finalizarRegistroConError("OTP debe tener 6 dígitos")
+            if (otpUsuario != obtenerOtpDelUsuario()) return@launch finalizarRegistroConError("OTP incorrecto")
+            if (!validarContrasena()) return@launch finalizarRegistroConError("Las contraseñas no coinciden")
+            if (validarDatos()) return@launch finalizarRegistroConError("Faltan datos por ingresar")
+            if (!checkboxTerminos.isChecked || !checkBoxPoliticas.isChecked)
+                return@launch finalizarRegistroConError("Debe aceptar Políticas de empresa, términos y condiciones.")
+
+            // Validaciones dependientes de la base de datos
+            if (consultarRutSQL()) return@launch finalizarRegistroConError("El RUT ya existe")
+            if (consultarCorreoSQL()) return@launch finalizarRegistroConError("Correo ya existe")
+
+            // Si todas las validaciones pasan, registrar el usuario
+            if (registrarUsuarioSQL()) {
+                mostrarProgreso(false)
+                mensaje("Usuario registrado")
+            } else {
+                mostrarProgreso(false)
+                mensaje("Error al registrar usuario")
+            }
+        }
+    }
+
+    // Función para finalizar con error y ocultar la barra de progreso
+    private fun finalizarRegistroConError(mensaje: String) {
+        mostrarProgreso(false)
+        mensaje(mensaje)
+    }
+
+    // Manejo centralizado de la barra de progreso
+    private fun mostrarProgreso(visible: Boolean) {
+        progressBar.visibility = if (visible) View.VISIBLE else View.GONE
+    }
     // OTP Generation (Random 6-digit number)
     private fun generarOTP(): String {
         val random = Random()
@@ -337,13 +393,14 @@ class Registro_pantalla : AppCompatActivity() {
     // Send OTP via email using JavaMail
     private fun enviarOtpPorCorreo(correo: String, otp: String) {
         Log.d("enviarOtpPorCorreo", "Iniciando envío de OTP")
-        val login : String = "CORREO@CORREO.COM" // USAR CORREO CREADO
-        val password : String = "clave" // USAR CLAVE CREADA
+        val login : String = "" // USAR CORREO CREADO
+        val password : String = "" // USAR CLAVE CREADA
         val properties = Properties()
         properties["mail.smtp.host"] = "smtp.gmail.com"
         properties["mail.smtp.port"] = "587"
         properties["mail.smtp.auth"] = "true"
         properties["mail.smtp.starttls.enable"] = "true"
+        properties["mail.smtp.ssl.protocols"] = "TLSv1.2"
 
         val session = Session.getInstance(properties, object : Authenticator() {
             override fun getPasswordAuthentication(): PasswordAuthentication {
@@ -579,6 +636,4 @@ class Registro_pantalla : AppCompatActivity() {
             return@withContext conf
         }
     }
-
-
 }
