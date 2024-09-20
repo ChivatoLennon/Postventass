@@ -275,20 +275,40 @@ class Registro_pantalla : AppCompatActivity() {
 
         lifecycleScope.launch {
             // Validaciones iniciales
-            if (rut.length < 8) return@launch finalizarRegistroConError("RUT Inválido")
-            if (!validarEmail(email)) return@launch finalizarRegistroConError("Correo no válido")
-            if (!validarRut(rut, opcionSpinnerDigito)) return@launch finalizarRegistroConError("RUT Inválido")
-            if (otpUsuario.isEmpty()) return@launch finalizarRegistroConError("Debe ingresar OTP")
-            if (otpUsuario.length != 6) return@launch finalizarRegistroConError("OTP debe tener 6 dígitos")
-            if (otpUsuario != obtenerOtpDelUsuario()) return@launch finalizarRegistroConError("OTP incorrecto")
-            if (!validarContrasena()) return@launch finalizarRegistroConError("Las contraseñas no coinciden")
-            if (validarDatos()) return@launch finalizarRegistroConError("Faltan datos por ingresar")
+            if (rut.length < 8) {
+                return@launch finalizarRegistroConError("RUT Inválido")
+            }
+            if (!validarEmail(email)) {
+                return@launch finalizarRegistroConError("Correo no válido")
+            }
+            if (!validarRut(rut, opcionSpinnerDigito)) {
+                return@launch finalizarRegistroConError("RUT Inválido")
+            }
+            if (otpUsuario.isEmpty()) {
+                return@launch finalizarRegistroConError("Debe ingresar OTP")
+            }
+            if (otpUsuario.length != 6) {
+                return@launch finalizarRegistroConError("OTP debe tener 6 dígitos")
+            }
+            if (otpUsuario != obtenerOtpDelUsuario()) {
+                return@launch finalizarRegistroConError("OTP incorrecto")
+            }
+            if (!validarContrasena()){
+                return@launch finalizarRegistroConError("Las contraseñas no coinciden")
+            }
+            if (validarDatos()) {
+                return@launch finalizarRegistroConError("Faltan datos por ingresar")
+            }
             if (!checkboxTerminos.isChecked || !checkBoxPoliticas.isChecked)
                 return@launch finalizarRegistroConError("Debe aceptar Políticas de empresa, términos y condiciones.")
 
             // Validaciones dependientes de la base de datos
-            if (consultarRutSQL()) return@launch finalizarRegistroConError("El RUT ya existe")
-            if (consultarCorreoSQL()) return@launch finalizarRegistroConError("Correo ya existe")
+            if (consultarRutSQL()) {
+                return@launch finalizarRegistroConError("El RUT ya existe")
+            }
+            if (consultarCorreoSQL()) {
+                return@launch finalizarRegistroConError("Correo ya existe")
+            }
 
             // Si todas las validaciones pasan, registrar el usuario
             if (registrarUsuarioSQL()) {
@@ -311,22 +331,39 @@ class Registro_pantalla : AppCompatActivity() {
     private fun mostrarProgreso(visible: Boolean) {
         progressBar.visibility = if (visible) View.VISIBLE else View.GONE
     }
-    // OTP Generation (Random 6-digit number)
+    // Genera OTP Random (6 digitos)
     private fun generarOTP(): String {
         val random = Random()
         return String.format("%06d", random.nextInt(999999))
     }
 
-    // Send OTP via email using JavaMail
+    // Envia opt por correo
     private fun enviarOtpPorCorreo(correo: String, otp: String) {
-        Log.d("enviarOtpPorCorreo", "Iniciando envío de OTP")
-        val login : String = "" // USAR CORREO CREADO
-        val password : String = "" // USAR CLAVE CREADA
+        // ESTO ES SOLO SI SE USA UNA CUENTA GMAIL
+        /*Log.d("enviarOtpPorCorreo", "Iniciando envío de OTP")
+        val login : String = "appmovil@erpmagistra.cl" // USAR CORREO CREADO
+        val password : String = "Magistra2024" // USAR CLAVE CREADA
         val properties = Properties()
         properties["mail.smtp.host"] = "smtp.gmail.com"
         properties["mail.smtp.port"] = "587"
         properties["mail.smtp.auth"] = "true"
         properties["mail.smtp.starttls.enable"] = "true"
+        properties["mail.smtp.ssl.protocols"] = "TLSv1.2"
+
+         */
+
+        // ESTO ES SOLO SI SE OCUPA UNA CUENTA CON CPANEL
+        Log.d("enviarOtpPorCorreo", "Iniciando envío de OTP")
+        val login = "appmovil@erpmagistra.cl" // Cuenta cpanel
+        val password = "Magistra2024" // Pass cpanel
+        val properties = Properties()
+
+        properties["mail.smtp.host"] = "mail.erpmagistra.cl" // SMTP con cuenta cpanel
+        properties["mail.smtp.port"] = "465" // Puerto de la cuenta de cpanel
+        properties["mail.smtp.auth"] = "true"
+        properties["mail.smtp.socketFactory.port"] = "465"
+        properties["mail.smtp.socketFactory.class"] = "javax.net.ssl.SSLSocketFactory"
+        properties["mail.smtp.ssl.enable"] = "true"
         properties["mail.smtp.ssl.protocols"] = "TLSv1.2"
 
         val session = Session.getInstance(properties, object : Authenticator() {
@@ -351,9 +388,8 @@ class Registro_pantalla : AppCompatActivity() {
         }
     }
 
-    // OTP Verification UI (mockup, implement in your app's UI)
+    //Verificacion OTP
 
-    // Mockup function for user OTP input (replace with actual input method)
     private fun obtenerOtpDelUsuario(): String {
         return txtOtp.text.toString()// Simulated user input
     }
