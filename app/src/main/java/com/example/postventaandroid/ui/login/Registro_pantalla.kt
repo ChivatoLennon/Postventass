@@ -344,6 +344,7 @@ class Registro_pantalla : AppCompatActivity() {
         val rut = txtRut.editText!!.text.toString()
         val otpUsuario = txtOtp.text.toString()
 
+        /*Hola este es un nuevo git committtt*/
         mostrarProgreso(true)
 
         lifecycleScope.launch {
