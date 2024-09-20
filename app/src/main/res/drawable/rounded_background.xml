@@ -1,0 +1,9 @@
+<shape xmlns:android="http://schemas.android.com/apk/res/android">
+    <!-- Fondo del TextView -->
+    <solid android:color= "@color/azul_mapa"/>
+    <!-- Bordes redondeados -->
+    <corners android:radius="20dp"/>
+
+    <!-- Borde opcional -->
+    <stroke android:width="2dp" android:color="@color/azul_mapa"/>
+</shape>
