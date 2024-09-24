@@ -104,5 +104,5 @@ dependencies {
 
 //    Si da error cambiar el nombre 'HARDMACHINE' al nombre de usuario de la pc en la cual se ejecuta este codigo
 //    PARA CONEXION SQL server
-    implementation(files("C:/Users/brigh/OneDrive/Escritorio/POSTVENTAS2/Postventass/app/libs/jtds-1.3.1.jar"))
+    implementation(files("C:/Users/chivo/Desktop/Post/Postventass/app/libs/jtds-1.3.1.jar"))
 }
